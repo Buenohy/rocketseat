@@ -14,19 +14,20 @@ export default function TabTwoScreen() {
       <Text className="font-thin text-gray-400">
         Sexta, 4 de Novembro de 2025.
       </Text>
+      <View className="mb-10 mt-9 w-screen flex-row">
+        <TextInput
+          className="mr-3 h-14 flex-1 rounded-md bg-[#1F1E25] p-4 text-xl text-white placeholder:text-gray-400"
+          placeholder="Nome do participante"
+          keyboardType="numeric"
+        />
 
-      <TextInput
-        className="h-14 rounded-md bg-[#1F1E25] p-4 text-xl text-white placeholder:text-gray-400"
-        placeholder="Nome do participante"
-        keyboardType="numeric"
-      />
-
-      <TouchableOpacity
-        className="h-14 w-14 items-center justify-center rounded-md bg-green-500"
-        onPress={handleParticipantAdd}
-      >
-        <Text className="text-2xl text-white dark:text-white">+</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          className="h-14 w-14 items-center justify-center rounded-md bg-green-500"
+          onPress={handleParticipantAdd}
+        >
+          <Text className="text-2xl text-white dark:text-white">+</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
