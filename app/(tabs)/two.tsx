@@ -1,4 +1,4 @@
-import { FlatList, TextInput, TouchableOpacity } from 'react-native';
+import { Alert, FlatList, TextInput, TouchableOpacity } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import Participant from '@/components/Participant';
 
@@ -22,11 +22,25 @@ export default function TabTwoScreen() {
   ];
 
   function handleParticipantAdd() {
-    console.log('Você clicou no botão de Adicionar!');
+    if (participantes.includes('Gabriel')) {
+      return Alert.alert(
+        'Participante existe',
+        'Já existe um participante na lista com esse nome'
+      );
+    }
   }
 
   function handleParticipantRemove(name: string) {
-    console.log(`Você clicou em remover o participante ${name}`);
+    Alert.alert('Remover', `Remover o participante ${name}?`, [
+      {
+        text: 'Sim',
+        onPress: () => Alert.alert('Deletado!'),
+      },
+      {
+        text: 'Não',
+        style: 'cancel',
+      },
+    ]);
   }
   return (
     <View className="flex-1 bg-red-500 p-4">
@@ -54,7 +68,7 @@ export default function TabTwoScreen() {
           <Participant
             key={item}
             name={item}
-            onRemove={() => handleParticipantRemove('Gabriel')}
+            onRemove={() => handleParticipantRemove(item)}
           />
         )}
         showsVerticalScrollIndicator={false}
