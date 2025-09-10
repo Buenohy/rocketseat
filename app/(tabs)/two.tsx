@@ -2,6 +2,7 @@ import { StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 
 import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
+import Participant from '@/components/Participant';
 
 export default function TabTwoScreen() {
   function handleParticipantAdd() {
@@ -28,6 +29,9 @@ export default function TabTwoScreen() {
           <Text className="text-2xl text-white dark:text-white">+</Text>
         </TouchableOpacity>
       </View>
+
+      <Participant />
+      <Participant />
     </View>
   );
 }
