@@ -48,7 +48,7 @@ export default function TabTwoScreen() {
       <Text className="font-thin text-gray-400">
         Sexta, 4 de Novembro de 2025.
       </Text>
-      <View className="mb-10 mt-9 w-screen flex-row">
+      <View className="mb-10 mt-9 flex-row">
         <TextInput
           className="mr-3 h-14 flex-1 rounded-md bg-[#1F1E25] p-4 text-xl text-white placeholder:text-gray-400"
           placeholder="Nome do participante"
