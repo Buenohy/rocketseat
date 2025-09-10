@@ -4,17 +4,19 @@ import Participant from '@/components/Participant';
 import { useState } from 'react';
 
 export default function TabTwoScreen() {
-  const [participants, setParticipants] = useState(['João']);
+  const [participants, setParticipants] = useState<string[]>([]);
+  const [participantName, setParticipantName] = useState('');
 
   function handleParticipantAdd() {
-    if (participants.includes('Rodrigo')) {
+    if (participants.includes(participantName)) {
       return Alert.alert(
         'Participante existe',
         'O participante Rodrigo já está na lista.'
       );
     }
 
-    setParticipants(prevState => [...prevState, 'Ana']);
+    setParticipants(prevState => [...prevState, participantName]);
+    setParticipantName('');
   }
 
   function handleParticipantRemove(name: string) {
@@ -44,6 +46,8 @@ export default function TabTwoScreen() {
         <TextInput
           className="mr-3 h-14 flex-1 rounded-md bg-[#1F1E25] p-4 text-xl text-white placeholder:text-gray-400"
           placeholder="Nome do participante"
+          onChangeText={setParticipantName}
+          value={participantName}
         />
 
         <TouchableOpacity
