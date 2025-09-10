@@ -78,7 +78,7 @@ export default function HomeScreen() {
         )}
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={() => (
-          <View className="items-center bg-transparent">
+          <View className="items-center justify-center bg-transparent">
             <Text className="text-xl">Niguém chegou ainda ?</Text>
             <Text className="text-xl">
               Adicione participantes a sua lista de presença.
