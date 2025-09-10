@@ -30,8 +30,10 @@ export default function TabTwoScreen() {
         </TouchableOpacity>
       </View>
 
-      <Participant />
-      <Participant />
+      <Participant name="Rodrigo" />
+      <Participant name="Diego" />
+      <Participant name="Vini" />
+      <Participant name="Biro" />
     </View>
   );
 }
