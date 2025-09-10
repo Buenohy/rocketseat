@@ -1,9 +1,4 @@
-import {
-  ScrollView,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import { FlatList, TextInput, TouchableOpacity } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import Participant from '@/components/Participant';
 
@@ -52,15 +47,24 @@ export default function TabTwoScreen() {
           <Text className="text-2xl text-white dark:text-white">+</Text>
         </TouchableOpacity>
       </View>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {participantes.map(participant => (
+      <FlatList
+        data={participantes}
+        keyExtractor={item => item}
+        renderItem={({ item }) => (
           <Participant
-            key={participant}
-            name={participant}
-            onRemove={() => handleParticipantRemove(participant)}
+            key={item}
+            name={item}
+            onRemove={() => handleParticipantRemove('Gabriel')}
           />
-        ))}
-      </ScrollView>
+        )}
+        showsVerticalScrollIndicator={false}
+        ListEmptyComponent={() => (
+          <Text className="text-center text-sm text-white">
+            NInguém chegou no evento ainda? Adicione participantes a sua lista
+            de presença.
+          </Text>
+        )}
+      />
     </View>
   );
 }
