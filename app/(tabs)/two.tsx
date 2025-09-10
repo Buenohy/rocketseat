@@ -8,14 +8,21 @@ export default function TabTwoScreen() {
   const [participantName, setParticipantName] = useState('');
 
   function handleParticipantAdd() {
-    if (participants.includes(participantName)) {
+    if (participantName.trim() === '') {
       return Alert.alert(
-        'Participante existe',
-        `O participante ${participantName} já está na lista.`
+        'Campo vazio',
+        'É necessário adicionar um nome ao participante.'
       );
     }
 
-    setParticipants(prevState => [...prevState, participantName]);
+    if (participants.includes(participantName.trim())) {
+      return Alert.alert(
+        'Participante existe',
+        `O participante ${participantName.trim()} já está na lista.`
+      );
+    }
+
+    setParticipants(prevState => [...prevState, participantName.trim()]);
     setParticipantName('');
   }
 
@@ -39,7 +46,7 @@ export default function TabTwoScreen() {
   return (
     <View className="flex-1 bg-[#131016] p-6">
       <Text className="text-xl font-bold text-white">Nome do evento</Text>
-      <Text className="font-thin text-gray-400">
+      <Text className="font-light text-gray-400">
         Sexta, 4 de Novembro de 2025.
       </Text>
       <View className="mb-10 mt-9 flex-row">
@@ -68,6 +75,14 @@ export default function TabTwoScreen() {
           />
         )}
         showsVerticalScrollIndicator={false}
+        ListEmptyComponent={() => (
+          <View className="items-center">
+            <Text className="text-xl">Niguém chegou ainda ?</Text>
+            <Text className="text-xl">
+              Adicione participantes a sua lista de presença.
+            </Text>
+          </View>
+        )}
       />
     </View>
   );
