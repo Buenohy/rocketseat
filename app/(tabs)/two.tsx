@@ -9,6 +9,9 @@ export default function TabTwoScreen() {
     console.log('Você clicou no botão de Adicionar!');
   }
 
+  function handleParticipantRemove(name: string) {
+    console.log(`Você clicou em remover o participante ${name}`);
+  }
   return (
     <View className="bg-red-500 p-4">
       <Text className="text-xl font-bold text-white">Nome do evento</Text>
@@ -30,10 +33,10 @@ export default function TabTwoScreen() {
         </TouchableOpacity>
       </View>
 
-      <Participant name="Rodrigo" />
-      <Participant name="Diego" />
-      <Participant name="Vini" />
-      <Participant name="Biro" />
+      <Participant
+        name="Gabriel"
+        onRemove={() => handleParticipantRemove('Gabriel')}
+      />
     </View>
   );
 }
