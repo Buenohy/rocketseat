@@ -1,40 +1,31 @@
 import { Alert, FlatList, TextInput, TouchableOpacity } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import Participant from '@/components/Participant';
+import { useState } from 'react';
 
 export default function TabTwoScreen() {
-  const participantes = [
-    'Gabriel',
-    'Vini',
-    'Diego',
-    'Biro',
-    'Ana',
-    'Isa',
-    'Jack',
-    'Mayk',
-    'João',
-    'Felipe',
-    'Caio',
-    'Rodrigo',
-    'Amanda',
-    'Lucas',
-    'Julia',
-  ];
+  const [participants, setParticipants] = useState(['João']);
 
   function handleParticipantAdd() {
-    if (participantes.includes('Gabriel')) {
+    if (participants.includes('Rodrigo')) {
       return Alert.alert(
         'Participante existe',
-        'Já existe um participante na lista com esse nome'
+        'O participante Rodrigo já está na lista.'
       );
     }
+
+    setParticipants(prevState => [...prevState, 'Ana']);
   }
 
   function handleParticipantRemove(name: string) {
     Alert.alert('Remover', `Remover o participante ${name}?`, [
       {
         text: 'Sim',
-        onPress: () => Alert.alert('Deletado!'),
+        onPress: () => {
+          setParticipants(prevState =>
+            prevState.filter(participant => participant !== name)
+          );
+        },
       },
       {
         text: 'Não',
@@ -42,8 +33,9 @@ export default function TabTwoScreen() {
       },
     ]);
   }
+
   return (
-    <View className="flex-1 bg-red-500 p-4">
+    <View className="flex-1 bg-[#131016] p-6">
       <Text className="text-xl font-bold text-white">Nome do evento</Text>
       <Text className="font-thin text-gray-400">
         Sexta, 4 de Novembro de 2025.
@@ -58,11 +50,11 @@ export default function TabTwoScreen() {
           className="h-14 w-14 items-center justify-center rounded-md bg-green-500"
           onPress={handleParticipantAdd}
         >
-          <Text className="text-2xl text-white dark:text-white">+</Text>
+          <Text className="text-2xl text-white">+</Text>
         </TouchableOpacity>
       </View>
       <FlatList
-        data={participantes}
+        data={participants}
         keyExtractor={item => item}
         renderItem={({ item }) => (
           <Participant
@@ -72,12 +64,6 @@ export default function TabTwoScreen() {
           />
         )}
         showsVerticalScrollIndicator={false}
-        ListEmptyComponent={() => (
-          <Text className="text-center text-sm text-white">
-            NInguém chegou no evento ainda? Adicione participantes a sua lista
-            de presença.
-          </Text>
-        )}
       />
     </View>
   );
