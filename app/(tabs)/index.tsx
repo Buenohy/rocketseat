@@ -4,6 +4,7 @@ import { Alert, FlatList, TextInput, TouchableOpacity } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import Participant from '@/components/Participant';
 import { useState } from 'react';
+import { StatusBar } from 'expo-status-bar';
 
 export default function HomeScreen() {
   const [participants, setParticipants] = useState<string[]>([]);
@@ -46,7 +47,8 @@ export default function HomeScreen() {
   }
 
   return (
-    <View className="flex-1 p-6">
+    <SafeAreaView className="flex-1 p-6">
+      <StatusBar style="light" />
       <Text className="text-xl font-bold text-white">Nome do evento</Text>
       <Text className="font-light text-gray-400">
         Sexta, 10 de Setembro de 2025.
@@ -86,6 +88,6 @@ export default function HomeScreen() {
           </View>
         )}
       />
-    </View>
+    </SafeAreaView>
   );
 }
