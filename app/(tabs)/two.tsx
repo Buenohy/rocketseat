@@ -11,7 +11,7 @@ export default function TabTwoScreen() {
     if (participants.includes(participantName)) {
       return Alert.alert(
         'Participante existe',
-        'O participante Rodrigo já está na lista.'
+        `O participante ${participantName} já está na lista.`
       );
     }
 
