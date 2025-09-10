@@ -49,7 +49,7 @@ export default function HomeScreen() {
     <View className="flex-1 p-6">
       <Text className="text-xl font-bold text-white">Nome do evento</Text>
       <Text className="font-light text-gray-400">
-        Sexta, 4 de Novembro de 2025.
+        Sexta, 10 de Setembro de 2025.
       </Text>
       <View className="mb-10 mt-9 flex-row">
         <TextInput
