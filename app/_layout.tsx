@@ -1,4 +1,4 @@
-import '../global.css'; // ✅ IMPORTAÇÃO DO CSS AQUI!
+import '../global.css';
 import {
   DarkTheme,
   DefaultTheme,
